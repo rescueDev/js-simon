@@ -23,8 +23,11 @@ $("document").ready(function () {
         randomNumbers.push(numeroRandom); //pusho il numero se non è doppio
       }
     }
+    //output numeri generati
     var numeriSeparati = randomNumbers.join(" - ");
-    $(".campo").text("Numeri generati: " + numeriSeparati); //output numeri generati
+    $(".campo").addClass("gen");
+    $(".campo").text(numeriSeparati);
+
     timer();
     //timeout per memorizzare numeri
     setTimeout(function () {
@@ -34,18 +37,25 @@ $("document").ready(function () {
       askGame(); //chiedo i numeri all'utente
 
       //OUTPUT
+      $(".match , .risultato").addClass("active");
       $(".risultati").text("Numeri matchati e indovinati: " + matchedNumber); //numeri indovinati
       $(".punteggio").text("Punteggio : " + matchedNumber.length); //Punteggio
-      console.log("NUmeri matchati e indovinati: " + matchedNumber); //Numeri indovinati
+      console.log("Match: " + matchedNumber); //Numeri indovinati
       console.log("Punteggio : " + matchedNumber.length); //Punteggio
+
+      $(".reload").removeClass("invisible");
+      $(".reload").addClass("visible");
     }, 31000);
 
     console.log(randomNumbers); //mostrami array con numeri random
   });
 
-  //infine il pc mi dice quanti e quali numeri ho azzeccato (eventuale bonus=punteggio)
+  //bottone che al click mi ricarica la pagina per giocare di nuovo
+  $(".reload").click(function () {
+    location.reload();
+  });
 
-  /* ---------------------------------------------------------------------------------------------------------------- */
+  /*---------------------------------------------------------------------------------------------------------------- */
 
   //FUNZIONI GENERALI
 
