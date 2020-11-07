@@ -14,6 +14,7 @@ $("document").ready(function () {
 
   //ciclo per creare 5 numeri finchè l'array non abbia lunghezza 5
   $(".generate").click(function () {
+    timer();
     while (randomNumbers.length < 5) {
       var numeroRandom = randomGenNumb(); //variabile che mi salva il valore random generato dalla funzione
       if (randomNumbers.includes(numeroRandom) === false) {
@@ -24,17 +25,11 @@ $("document").ready(function () {
     }
     var numeriSeparati = randomNumbers.join(" - ");
     $(".campo").text("Numeri generati: " + numeriSeparati); //output numeri generati
-
+    timer();
     //timeout per memorizzare numeri
-    // start fade out in one second, take 300ms to fade
-    setTimeout(function () {
-      $(".campo").fadeOut();
-    }, 3000);
-
-    console.log(randomNumbers); //mostrami array con numeri random
-
     setTimeout(function () {
       alert("Bene adesso devi indovinarli!! Clicca Ok per continuare");
+
       //funzione con prompt richiesta numeri
       askGame(); //chiedo i numeri all'utente
 
@@ -43,7 +38,9 @@ $("document").ready(function () {
       $(".punteggio").text("Punteggio : " + matchedNumber.length); //Punteggio
       console.log("NUmeri matchati e indovinati: " + matchedNumber); //Numeri indovinati
       console.log("Punteggio : " + matchedNumber.length); //Punteggio
-    }, 5000);
+    }, 31000);
+
+    console.log(randomNumbers); //mostrami array con numeri random
   });
 
   //infine il pc mi dice quanti e quali numeri ho azzeccato (eventuale bonus=punteggio)
@@ -87,5 +84,25 @@ $("document").ready(function () {
 
       i++;
     }
+  }
+
+  //funzione per generare countdown visibile nella pagina
+  function timer() {
+    var counter = 30; //faccio partire il contatore
+    setInterval(function () {
+      counter--; //decremento il contatore ogni secondo
+
+      //quando il tempo arriva a 0 faccio sparire sia tempo rimanente che il contatore
+      if (counter >= 0) {
+        $(".tempo-rim").text("Tempo rimanente: ");
+        $(".timer").text(counter);
+      }
+
+      //quando il contatore raggiunge lo 0 faccio sparire tempo rimanente e lo 0
+      if (counter === 0) {
+        $(".timer , .tempo-rim , .campo").fadeOut(counter);
+        clearInterval(counter); //azzero il timeout
+      }
+    }, 1000); //1 sec ogni decremento
   }
 });
