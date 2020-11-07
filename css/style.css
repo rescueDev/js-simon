@@ -1,0 +1,20 @@
+/* Regole generali */
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+/* Regole stile */
+
+button.generate {
+  border-radius: 50px;
+  animation: scale 2s;
+}
+
+button:hover {
+  cursor: pointer;
+  transition: 1s ease-in-out;
+  transform: scale(1.2);
+}
+
+.campo-contenitore {
+  padding: 5% 0;
+}
