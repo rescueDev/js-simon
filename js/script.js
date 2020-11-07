@@ -12,10 +12,25 @@ $("document").ready(function () {
   //creo array vuoto dove andranno i match di numeri finali
   var matchedNumber = [];
 
+  var level;
+  $(".difficulty").click(function () {
+    if ($(this).hasClass("easy") === true) {
+      level = 5;
+      console.log("Hai scelto il livello facile");
+    } else if ($(this).hasClass("medium") === true) {
+      level = 8;
+      console.log("Hai scelto il livello medio");
+    } else if ($(this).hasClass("hard") === true) {
+      level = 10;
+      console.log("Hai scelto il livello difficile");
+    }
+    return level;
+  });
+
   //ciclo per creare 5 numeri finchè l'array non abbia lunghezza 5
   $(".generate").click(function () {
     timer();
-    while (randomNumbers.length < 5) {
+    while (randomNumbers.length < level) {
       var numeroRandom = randomGenNumb(); //variabile che mi salva il valore random generato dalla funzione
       if (randomNumbers.includes(numeroRandom) === false) {
         //se l'array non include un numero random già presente
@@ -68,7 +83,7 @@ $("document").ready(function () {
   //funzione che chiede i numeri all'utente con casi limite e risultato finale
   function askGame() {
     var i = 0;
-    while (userNmbr.length < 5) {
+    while (userNmbr.length < level) {
       var askNumb = parseInt(prompt("Inserisci il numero"));
       console.log(askNumb);
 
