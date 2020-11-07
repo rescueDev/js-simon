@@ -22,7 +22,8 @@ $("document").ready(function () {
         randomNumbers.push(numeroRandom); //pusho il numero se non è doppio
       }
     }
-    $(".campo").text("Numeri generati: " + randomNumbers); //output numeri generati
+    var numeriSeparati = randomNumbers.join(" - ");
+    $(".campo").text("Numeri generati: " + numeriSeparati); //output numeri generati
 
     //timeout per memorizzare numeri
     // start fade out in one second, take 300ms to fade
