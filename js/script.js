@@ -12,14 +12,21 @@ $("document").ready(function () {
   //creo array vuoto dove andranno i match di numeri finali
   var matchedNumber = [];
 
-  var level;
+  var level; //variabile di appoggio che cambia valore di  livello
+
+  //scelta del livello difficoltà al click dei button
   $(".difficulty").click(function () {
+    //se clicco button con classe easy setta la variabile level a 5 numeri max
     if ($(this).hasClass("easy") === true) {
       level = 5;
       console.log("Hai scelto il livello facile");
+
+      //se clicco button con classe medium setta la variabile level a 8 numeri max
     } else if ($(this).hasClass("medium") === true) {
       level = 8;
       console.log("Hai scelto il livello medio");
+
+      //se clicco button con classe hard setta la variabile level a 10 numeri max
     } else if ($(this).hasClass("hard") === true) {
       level = 10;
       console.log("Hai scelto il livello difficile");
